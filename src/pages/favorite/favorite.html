@@ -1,0 +1,31 @@
+<!--
+  Generated template for the FavoritePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Favoris</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class='card-background-page'>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-3>
+        <button ion-button (click)="presentAlertConfirm()" class="exportFavorite">Export</button>
+        <button ion-button (click)="importFavorites()" class="importFavorite">Import</button>
+      </ion-col>
+      <ion-col col-12 col-md-3 *ngFor="let favorite of favoriteMovies">
+        <ion-card (click)="itemTapped(favorite)">
+          <ion-icon name="star" (click)="deleteFavorite(favorite.imdbID)" class="card-favorite"></ion-icon>
+          <img src='{{favorite.Poster}}' />
+          <div text-wrap class="card-title"> {{favorite.Title}}</div>
+          <div class="card-subtitle">{{favorite.Year}}</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

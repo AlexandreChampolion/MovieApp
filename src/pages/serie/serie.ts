@@ -1,35 +1,30 @@
 import { Component } from '@angular/core';
-import { AlertController } from 'ionic-angular';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { CallApiProvider } from '../../providers/api-connection/api-connection';
-import { MovieDetailsPage } from '../movie-details/movie-details';
+import { SerieDetailsPage } from '../serie-details/serie-details';
 
+/**
+ * Generated class for the SeriePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [CallApiProvider]
+  selector: 'page-serie',
+  templateUrl: 'serie.html',
 })
-
-export class Movie {
+export class Serie {
 
   public data: any;
   public position: any;
   searchTerm : any="";
   toggled: boolean;
-  private Movie;
-  private MoviePage = this.MoviePage;
-  private Favorite;
   noResult = true;
 
-  constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider, public alertCtrl: AlertController){
+  constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider){
     this.toggled = false;
-    this.Movie = Movie;
-    this.Favorite = this.Favorite;
-  }
-
-  openPage(p) {
-    this.navCtrl.push(p);
   }
 
   toggleSearch() {
@@ -37,14 +32,14 @@ export class Movie {
   }
 
   itemTapped(event, item){
-    this.navCtrl.push(MovieDetailsPage, {
+    this.navCtrl.push(SerieDetailsPage, {
       item: item
     });
   }
 
   initializeItems() {
-    this.callApiProvider.load(this.searchTerm).subscribe(result => {
-      
+    this.callApiProvider.loadSerie(this.searchTerm).subscribe(result => {
+
       if (!result || result['Response'] === 'False') {
         this.noResult = false;
       }
@@ -70,3 +65,4 @@ export class Movie {
     }
   }
 }
+

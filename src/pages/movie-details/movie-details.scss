@@ -1,0 +1,51 @@
+page-movie-details {
+
+.toolbar-background {
+    background-color: #629bff;
+}
+
+.movieDetails img {
+    width: 100%;
+}
+
+.content {
+    background: #000;
+}
+
+.movieContent h1 {
+    font-size: 30px;
+    margin-top: 0px;
+    color: #629bff;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    padding: 0 5px;
+}
+
+.movieContent p {
+    color: #629bff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.movieContent span {
+    color: #629bff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.rating {
+    font-size: 20px;
+    text-align: right
+}
+
+.contentFilm {
+    padding: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+ 
+}

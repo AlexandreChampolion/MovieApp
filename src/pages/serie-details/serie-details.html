@@ -1,0 +1,59 @@
+<!--
+  Generated template for the SerieDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+      <button menuToggle *ngIf="!selectedItem">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngIf="selectedItem" >{{selectedItem.Title}}</ion-title>
+      <ion-buttons end>
+        <button ion-button color="white" (click)="favorite(selectedItem.imdbID)">
+          <ion-icon name="star" *ngIf="isFavorite" color='white' ></ion-icon>
+          <ion-icon name="star" *ngIf="!isFavorite" ></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+  
+  <ion-content>
+      <div *ngIf="selectedItem">
+          <ion-grid>
+            <ion-row class="serieContent">
+              <ion-col col-12>
+                  <img src="{{selectedItem.Poster}}" alt="">
+              </ion-col>
+              <ion-col col-12 class="text-center">
+                  <span class="rating">{{selectedItem.imdbRating}}/10 </span>
+                  <span class="votes">{{selectedItem.imdbVotes}} votes</span>
+              </ion-col>
+              <ion-col col-12 class="serieContent">
+                    <h1>{{selectedItem.Title}}</h1>
+                    <hr>
+                    <span class="rating"> <ion-icon name="star"></ion-icon> {{selectedItem.imdbRating}}/10 </span>
+                    <span class="votes"> on {{selectedItem.imdbVotes}} votes</span>
+                    <p><strong> <ion-icon name="cog"></ion-icon> Genre : </strong>{{selectedItem.Genre}}</p>
+                    <p class="text-justify"><strong> <ion-icon name="book"></ion-icon> Description : </strong>{{selectedItem.Plot}}</p>
+                    <p><strong><ion-icon name="calendar"></ion-icon> Date de création : </strong>{{selectedItem.Released}}</p>
+                    <p><strong><ion-icon name="contact"></ion-icon> Directeur : </strong>{{selectedItem.Director}}</p>
+                    <p><strong><ion-icon name="color-palette"></ion-icon> Production :</strong> {{selectedItem.Production}}</p>
+                    <p><strong><ion-icon name="clock"></ion-icon> Durée : </strong>{{selectedItem.Runtime}}</p>
+                    <p><strong><ion-icon name="people"></ion-icon> Recommendation : </strong>{{selectedItem.Rated}}</p>
+                    <p><strong><ion-icon name="contacts"></ion-icon> Acteurs : </strong>{{selectedItem.Actors}}</p>
+                    <p><strong><ion-icon name="trophy"></ion-icon> Nomination : </strong>{{selectedItem.Awards}}</p>
+                    <p *ngIf="selectedItem.Website != 'N/A'"><strong> <ion-icon name="at"></ion-icon> Site web : </strong><a target='_blank' href="{{selectedItem.Website}}">{{selectedItem.Website}}</a></p>
+                </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-list>
+              <ion-item *ngFor="let season of seasons; index as i" class="seasonList">
+                  <div (click)="seasonTapped(selectedItem.imdbID, i)">
+                      <ion-segment-button>SAISON {{i+1}}</ion-segment-button>
+                  </div>
+              </ion-item>
+          </ion-list>
+        </div>    
+  </ion-content>

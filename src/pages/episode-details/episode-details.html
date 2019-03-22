@@ -1,0 +1,50 @@
+<!--
+  Generated template for the EpisodeDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>details-episode</ion-title>
+    <ion-buttons end>
+      <button ion-button color="white" (click)="favorite(selectedItem.imdbID)">
+        <ion-icon name="star" *ngIf="isFavorite" color='white' ></ion-icon>
+        <ion-icon name="star" *ngIf="!isFavorite" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+    <ion-grid>
+      <ion-row class="contentEpisode">
+        <ion-col col-6>
+          <p text-center>
+              <img alt="{{episodeDetail.Title}}" src="{{episodeDetail.Poster}}" >
+          </p>
+        </ion-col>
+        <ion-col col-6>
+          <div>
+            <p><b>Titre de l'épisode :</b> {{episodeDetail.Title}}</p>
+            <p><b>Durée :</b> {{episodeDetail.Runtime}}</p>
+            <p><b>Genre :</b> {{episodeDetail.Genre}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="staffEpisode">
+      <p><b>Country :</b> {{episodeDetail.Country}}</p>
+      <p><b>Language :</b> {{episodeDetail.Language}}</p>
+      <p><b>DVD :</b> {{episodeDetail.DVD}}</p>
+      <p><b>Actors :</b> {{episodeDetail.Actors}}</p>
+      <p><b>Director :</b> {{episodeDetail.Director}}</p>
+      <p><b>Awards :</b> {{episodeDetail.Awards}}</p>
+      <p><b>Production :</b> {{episodeDetail.Production}}</p>
+      <p><b>Writer :</b> {{episodeDetail.Writer}}</p>
+      <p><b>BoxOffice :</b> {{episodeDetail.BoxOffice}}</p>
+      <p><b>Résumé :</b> {{episodeDetail.Plot}}</p>
+      <br>
+      <a href='{{episodeDetail.Website}}' target='_blank'>{{episodeDetail.Website}}</a>
+    </div>
+</ion-content>

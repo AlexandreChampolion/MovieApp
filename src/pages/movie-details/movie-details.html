@@ -1,0 +1,48 @@
+<!--
+  Generated template for the MovieDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="selectedItem" >{{selectedItem.Title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="white" (click)="favorite(selectedItem.imdbID)">
+        <ion-icon name="star" *ngIf="isFavorite" color='white' ></ion-icon>
+        <ion-icon name="star" *ngIf="!isFavorite" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="selectedItem">
+        <ion-grid>
+          <ion-row class="movieDetails">
+            <ion-col col-12 text-center>
+                <img src="{{selectedItem.Poster}}" alt="">
+                <button ion-button (click)="downloadPoster()">Télécharger Poster</button>
+            </ion-col>
+            <ion-col col-12 class="movieContent">
+                <h1>{{selectedItem.Title}}</h1>
+                <hr>
+                <p><strong><ion-icon name="clock"></ion-icon> Durée : </strong>{{selectedItem.Runtime}}</p>
+                <p><strong> <ion-icon name="cog"></ion-icon> Genre : </strong>{{selectedItem.Genre}}</p>
+                <p><strong><ion-icon name="calendar"></ion-icon> Date de sortie : </strong>{{selectedItem.Released}}</p>
+                <p class="text-justify"><strong><ion-icon name="book"></ion-icon> Description : </strong>{{selectedItem.Plot}}</p>
+                <span class="rating"> <ion-icon name="star"></ion-icon> {{selectedItem.imdbRating}}/10 </span>
+                <span class="votes"> on {{selectedItem.imdbVotes}} votes</span>
+                <p><strong><ion-icon name="contact"></ion-icon> Directeur : </strong>{{selectedItem.Director}}</p>
+                <p><strong><ion-icon name="people"></ion-icon> Recommendation : </strong>{{selectedItem.Rated}}</p>
+                <p><strong><ion-icon name="contacts"></ion-icon> Acteurs : </strong>{{selectedItem.Actors}}</p>
+                <p><strong><ion-icon name="trophy"></ion-icon> Nomination : </strong>{{selectedItem.Awards}}</p>
+                <p *ngIf="selectedItem.Website != 'N/A'"><strong> <ion-icon name="at"></ion-icon> Site web : </strong><a target='_blank' href="{{selectedItem.Website}}">{{selectedItem.Website}}</a></p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+</ion-content>
